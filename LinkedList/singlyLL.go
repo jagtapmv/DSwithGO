@@ -9,7 +9,7 @@ type Node struct {
 	Next *Node
 }
 
-//Function to traverse the Linked List
+//Method to traverse the Linked List
 func (head *Node) traverseLL() {
 	data := head.Data
 	next := head.Next
@@ -26,6 +26,7 @@ func (head *Node) traverseLL() {
 	}
 }
 
+//Method to search for any specific term. It will output the index if term is present
 func (head *Node) searchLL(searchTerm any) {
 	data := head.Data
 	next := head.Next
