@@ -23,8 +23,19 @@ func main() {
 	first.Next = &second
 	second.Data = 3
 
-	//Printing the node data
-	fmt.Printf("Head Data: %d and Next pointer: %x", head.Data, head.Next)
-	fmt.Printf("First Data: %d and Next pointer: %x", first.Data, first.Next)
-	fmt.Printf("Second Data: %d and Next pointer: %x", second.Data, second.Next)
+	//Traversing through the list
+	data := head.Data
+	next := head.Next
+	i := 0
+	for {
+		fmt.Printf("%dth value is: %d\n", i, data)
+		data = next.Data
+		next = next.Next
+		i++
+		if next == nil {
+			fmt.Printf("%dth value is: %d\n", i, data)
+			break
+		}
+	}
+	fmt.Println("List traversal is completed!")
 }
