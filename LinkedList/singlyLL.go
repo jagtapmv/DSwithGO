@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 //create a node struct with data and next pointer
 
@@ -74,6 +77,32 @@ func (head *Node) InsertLastinLL(term any) {
 	lastNode.Next = &newNode
 }
 
+//Get length of a given LL
+func (head *Node) Length() int {
+	length := 1
+	lastNode := head
+	for lastNode.Next != nil {
+		lastNode = lastNode.Next
+		length++
+	}
+	return length
+}
+
+//Insert at the given position in the list
+func (head *Node) InsertAtinLL(index int, term any) {
+	if index < head.Length() && index > 0 {
+		theNode := head
+		i := 1
+		for i != index {
+			theNode = theNode.Next
+			i++
+		}
+		theNode.Next = &Node{term, theNode.Next}
+	} else {
+		log.Println("The index should be greater than 0 and less than", head.Length())
+	}
+}
+
 func main() {
 	//creating 3 nodes with nil as data and pointer
 	head := Node{nil, nil}
@@ -105,5 +134,9 @@ func main() {
 
 	//Insert at last postion
 	newHead.InsertLastinLL("last")
+	newHead.traverseLL()
+
+	//Insert element at the specific position in the LL
+	newHead.InsertAtinLL(2, "Inserted here")
 	newHead.traverseLL()
 }
