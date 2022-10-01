@@ -50,8 +50,32 @@ func (head *Node) searchLL(searchTerm any) {
 	}
 }
 
+//Method to insert the node as head Or at the first position
+func (head *Node) InsertFirstinLL(term any) *Node {
+	return &Node{term, head}
+}
+
+//Method to delete the first/head node of a LL
+func (head *Node) DeleteFirstfromLL() *Node {
+	newHead := head.Next
+	head = &Node{nil, nil}
+	return newHead
+}
+
+//Insert at last position when head is given
+func (head *Node) InsertLastinLL(term any) {
+	var newNode Node
+	newNode.Data = term
+	newNode.Next = nil
+	lastNode := head
+	for lastNode.Next != nil {
+		lastNode = lastNode.Next
+	}
+	lastNode.Next = &newNode
+}
+
 func main() {
-	//creating 3 nodes with 0 as data and nil as pointer
+	//creating 3 nodes with nil as data and pointer
 	head := Node{nil, nil}
 	first := Node{nil, nil}
 	second := Node{nil, nil}
@@ -70,4 +94,16 @@ func main() {
 
 	//Search for specific search term
 	head.searchLL(1)
+
+	//Insert element at the start of the LL
+	newHead := head.InsertFirstinLL("first")
+	newHead.traverseLL()
+
+	//Delete first element(Head) of LL
+	newHead = newHead.DeleteFirstfromLL()
+	newHead.traverseLL()
+
+	//Insert at last postion
+	newHead.InsertLastinLL("last")
+	newHead.traverseLL()
 }
