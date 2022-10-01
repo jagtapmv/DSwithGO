@@ -12,6 +12,15 @@ type Node struct {
 	Next *Node
 }
 
+//Method to create the new LL
+func CreateLL(listData []any) *Node {
+	head := &Node{listData[0], nil}
+	for i := 1; i < len(listData); i++ {
+		head.InsertLastinLL(listData[i])
+	}
+	return head
+}
+
 //Method to traverse the Linked List
 func (head *Node) traverseLL() {
 	data := head.Data
@@ -139,4 +148,8 @@ func main() {
 	//Insert element at the specific position in the LL
 	newHead.InsertAtinLL(2, "Inserted here")
 	newHead.traverseLL()
+
+	//Create a list using slice of data
+	createdHead := CreateLL([]any{2, 3, 4, 5, 6})
+	createdHead.traverseLL()
 }
