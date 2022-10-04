@@ -1,4 +1,4 @@
-package main
+package doublyLL
 
 import "fmt"
 
@@ -90,41 +90,4 @@ func (head *DLLNode) DeleteFromDLL(index int) {
 	} else {
 		fmt.Println("Provided index is out of bound!")
 	}
-}
-
-func main() {
-	head := DLLNode{nil, nil, nil}
-	first := DLLNode{nil, nil, nil}
-	second := DLLNode{nil, nil, nil}
-	third := DLLNode{nil, nil, nil}
-
-	head.Data = 2
-	head.Next = &first
-	first.Data = 3
-	first.Next = &second
-	first.Prev = &head
-	second.Data = 5
-	second.Prev = &first
-	second.Next = &third
-	third.Prev = &second
-	third.Data = 7
-
-	//Traverse the Linked list
-	fmt.Println("=X=X=X=Traversal of Doubly Linked list=X=X=X=X=")
-	head.TraverseDLL()
-	fmt.Println("=X=Traversal of Doubly Linked list in reverse order=X=")
-	second.TraverseReverseDLL()
-
-	//Insert at position/index 2
-	fmt.Println("=X=X=X=Insert at specific index=X=X=X=X=")
-	head.InsertAtinDLL(2, 4)
-	head.TraverseDLL()
-	//third.TraverseReverseDLL()
-
-	//Delete from index 2
-	fmt.Println("=X=X=X=Delete from specific index=X=X=X=X=")
-	head.DeleteFromDLL(2)
-	head.TraverseDLL()
-	third.TraverseReverseDLL()
-
 }
